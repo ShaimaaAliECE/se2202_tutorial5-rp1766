@@ -3,15 +3,22 @@ let nextPlayer = 'X'; // takes a value of either 'X' or 'O' according to the gam
 //initialize the game
 
 // use the value stored in the nextPlayer variable to indicate who the next player is
-
+document.getElementById('next-lbl').innerHTML = nextPlayer;
 
 //This call will create the buttons needed for the gameboard.
-createGameBoard()
+createGameBoard();
 
 function createGameBoard()
 {
+    for(i = 0; i < 9 ; i++){
+        let grid = 'c' + (i+1);
+        
+        let newbtn = document.createElement('button');
+        document.getElementById(grid).appendChild(newbtn);
+        newbtn.innerHTML = '{}'; 
+    }
+    
     // Programatically add a button with square brackets enclosing an empty space to each cell in the gameboard
-   
 }
 
 // Programatically add 'takeCell' as an event listener to all the buttons on the board
@@ -22,8 +29,10 @@ for (let i=0; i<btns.length; i++)
 }
 
 // This function will be used to respond to a click event on any of the board buttons.
-function takeCell(event)
-{
+function takeCell(event){
+    // if(btns == ){
+
+    // }   
     /*
         When the button is clicked, the space inside its square brackets is replaced by the value in the nextPlayer before switching it
     */
@@ -31,8 +40,10 @@ function takeCell(event)
     // Make sure the button is clickable only once (I didn't mention how to do that, look it up :) )
 
     // Check if the game is over
-    if (isGameOver())
-    {
+    if (isGameOver()){
+        var lbl = document.getElementById('game-over-lbl');
+        var gameover = document.createTextNode("Game Over");
+        lbl.appendChild(gameover);
         // let the lable with the id 'game-over-lbl' display the words 'Game Over' inside <h1> element
     }
 
