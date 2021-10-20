@@ -3,7 +3,7 @@ let nextPlayer = 'X'; // takes a value of either 'X' or 'O' according to the gam
 //initialize the game
 
 // use the value stored in the nextPlayer variable to indicate who the next player is
-document.getElementById('next-lbl').innerHTML = nextPlayer;
+document.getElementById('next-lbl').innerText = nextPlayer;
 
 //This call will create the buttons needed for the gameboard.
 createGameBoard();
@@ -34,9 +34,11 @@ function takeCell(event){
     event.target.innerHTML = nextPlayer;
     if(nextPlayer == 'X'){
         nextPlayer = 'O';
+        document.getElementById('next-lbl').innerText = nextPlayer;
     }
     else if (nextPlayer == 'O'){
         nextPlayer = 'X';
+        document.getElementById('next-lbl').innerText = nextPlayer;
     }
     /*
         When the button is clicked, the space inside its square brackets is replaced by the value in the nextPlayer before switching it
@@ -62,9 +64,10 @@ function isGameOver()
 {
     let disbtn = true;
     for(let i = 0; i < btns.length; i++){
-        if(btns[i].disabled){
+        if(!btns[i].disabled){
             disbtn = false;
         }
+       
     }
     return disbtn;
     // This function returns true if all the buttons are disabled and false otherwise 
